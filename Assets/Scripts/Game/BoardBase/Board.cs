@@ -14,14 +14,14 @@ public class Board : MonoBehaviour
 
     public void Prepare(int row , int columns)
     {
-        Rows = row;
+        Rows = row; 
         Columns = columns;
-
-        Cells = new Cell[Rows, Columns];
-
-        CreateCells();
-        
+        // Aldığımız Değerleri olusturduğumuz Rows ve Columns a eşitliyoruz.
+        Cells = new Cell[Rows, Columns]; //Cell'imiz boş bir matrixken biz ona değerlerimizi atıyoruz. 
+        CreateCells(); //CreateCell methodunu çağırıyoruz.
+        PrepareCells();
     }
+
 
     private void CreateCells()
     {
@@ -35,4 +35,15 @@ public class Board : MonoBehaviour
             }
         }
     }
+    private void PrepareCells() //Cellerimizin içini ayarlıyoruz. 
+    {
+        for (int x = 0; x < Rows; x++)
+        {
+            for (int y = 0; y < Columns; y++)
+            {
+                Cells[x, y].Prepare(x, y);  
+            }
+        }
+    }
+    
 }

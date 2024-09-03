@@ -6,7 +6,6 @@ using Zenject;
 public class Cell : MonoBehaviour , ITouchable 
 {
     [SerializeField] private TextMeshPro labelText;
-    [SerializeField] private Board _board;
     public List<Cell> Neighbors { get; private set; } = new();
 
     public Item Item

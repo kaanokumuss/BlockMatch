@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 public class ItemBase : MonoBehaviour
 {
-    public class ItemBaseFactory : PlaceholderFactory<ItemBase> {}
-
+    [SerializeField] private FallAnimation fallAnimation;
+    public FallAnimation FallAnimation => fallAnimation;
+    
+    public class Factory : PlaceholderFactory<ItemBase> { }
 }

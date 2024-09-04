@@ -1,25 +1,28 @@
-﻿public class Level_1 : LevelData
+namespace Game.Levels
 {
-    public override void Initialize()
+    public class Level_1 : LevelData
     {
-        RowCount = 10;
-        ColCount = 12;
-
-        GridData = new ItemType[RowCount, ColCount];
-
-        for (int x = 0; x < RowCount; x++)
+        public override void Initialize()
         {
+            RowCount = 10;
+            ColCount = 12;
             
-            for (int y = 0; y < ColCount; y++)
+            GridData = new ItemType[RowCount, ColCount];
+            
+            for (int x = 0; x < RowCount; x++)
             {
-                if (GridData[x, y] != ItemType.None) continue;
-                GridData[x, y] = GetRandomItemType();
+                for (int y = 0; y < ColCount; y++)
+                {
+                    if (GridData[x, y] != ItemType.None) continue;
+                    
+                    GridData[x, y] = GetRandomItemType();
+                }
             }
         }
-    }
 
-    public override ItemType GetNextFillItemType()
-    {
-        return GetRandomItemType();
+        public override ItemType GetNextFillItemType()
+        {
+            return GetRandomItemType();
+        }
     }
 }

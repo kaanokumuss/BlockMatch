@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6de2197c0dbe114fa26eabcb42198c1, type: 3}
+  m_Script: {fileID: 11500000, guid: 321ef14cdecdf461c84da75ab22bf985, type: 3}
   m_Name: GameplayInstaller
   m_EditorClassIdentifier: 
-  cellPrefab: {fileID: 7585245898903763163, guid: 29c55230156d54b47bcc44522eda48cb,
+  cellPrefab: {fileID: 8434842648356985194, guid: 25498f7c124424e6fb361bc69254b3db,
     type: 3}
-  itemBasePrefab: {fileID: 1484937104512859620, guid: 14d5434c9fa8fb84cbabc4e210e93648,
+  itemBasePrefab: {fileID: 8015092391035118337, guid: 8c275b5b6b7444d11b6e7462394c12d4,
     type: 3}
+  itemStatsSO: {fileID: 11400000, guid: 05462cc5c4fa248b79e30bef520cfae3, type: 2}
+  colorListSO: {fileID: 11400000, guid: 6e0d237600e8341038a7c9aa181054d3, type: 2}

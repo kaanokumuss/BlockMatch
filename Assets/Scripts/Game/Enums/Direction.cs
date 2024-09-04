@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
-
 public enum Direction
 {
-    None = 0,
-    Up ,
+    None = -1,
+    Up = 0,
     UpRight,
     Right,
     DownRight,
@@ -14,5 +9,4 @@ public enum Direction
     DownLeft,
     Left,
     UpLeft
-    
 }

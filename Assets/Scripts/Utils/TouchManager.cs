@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -7,12 +6,13 @@ using Zenject;
 
 public class TouchManager : MonoBehaviour
 {
-    private CancellationTokenSource _cts;
     [SerializeField] private float firstTapDelayDuration;
-    private Camera _cam;
-    bool _canTouch;
 
     [Inject] private SignalBus _signalBus;
+
+    private CancellationTokenSource _cts;
+    private Camera _cam;
+    private bool _canTouch;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class TouchManager : MonoBehaviour
         _cam = Camera.main;
     }
 
-    void Start()
+    private void Start()
     {
         _canTouch = false;
         WaitForOpenTouch();
@@ -31,7 +31,7 @@ public class TouchManager : MonoBehaviour
         _cts.Cancel();
     }
 
-    void Update()
+    private void Update()
     {
         if (_canTouch)
         {
@@ -39,32 +39,26 @@ public class TouchManager : MonoBehaviour
         }
     }
 
-    void GetTouch(Vector3 pos)
+    private void GetTouch(Vector3 pos)
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Mouse Clicked at: " + pos);
             var hit = Physics2D.OverlapPoint(_cam.ScreenToWorldPoint(pos));
             if (CanTouch(hit))
             {
-                Debug.Log("Hit: " + hit.gameObject.name);
                 if (hit.gameObject.TryGetComponent(out ITouchable selectedElement))
                 {
-                    // TouchEvents.OnElementTapped?.Invoke(selectedElement);
                     _signalBus.Fire(new OnElementTappedSignal(selectedElement));
                 }
             }
             else
             {
-                Debug.Log("No hit detected.");
-                // TouchEvents.OnEmptyTapped?.Invoke();
                 _signalBus.Fire<OnEmptyTappedSignal>();
             }
         }
     }
 
-
-    bool CanTouch(Collider2D hit)
+    private bool CanTouch(Collider2D hit)
     {
         return hit != null;
     }
@@ -74,26 +68,28 @@ public class TouchManager : MonoBehaviour
         try
         {
             var duration = TimeSpan.FromSeconds(firstTapDelayDuration);
-            await UniTask.Delay(duration , cancellationToken : _cts.Token);
+            await UniTask.Delay(duration, cancellationToken: _cts.Token);
+            
             _canTouch = true;
         }
         catch (OperationCanceledException e)
         {
             Debug.Log(e);
         }
-    }
+    } 
 }
 
 public struct OnElementTappedSignal
 {
     public readonly ITouchable Touchable;
-
+    
     public OnElementTappedSignal(ITouchable touchable)
     {
         Touchable = touchable;
     }
 }
-public struct OnEmptyTappedSignal {}
+
+public struct OnEmptyTappedSignal { }
 
 public interface ITouchable
 {

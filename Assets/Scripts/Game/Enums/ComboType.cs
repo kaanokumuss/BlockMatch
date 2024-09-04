@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public enum ComboType 
+public enum ComboType
 {
     None = 0,
-    RocketRocket , 
+    RocketRocket,
     BombRocket,
     BombBomb,
     DiscoBomb,
     DiscoRocket,
-    DiscoDisco
+    DiscoDisco,
 }

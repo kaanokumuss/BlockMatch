@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 public abstract class LevelData
 {
@@ -7,7 +7,6 @@ public abstract class LevelData
     public ItemType[,] GridData { get; protected set; }
     public int ColCount;
     public int RowCount;
-
     protected ItemType[] DefaultItemTypes = new[]
     {
         ItemType.GreenCube,
@@ -15,29 +14,31 @@ public abstract class LevelData
         ItemType.BlueCube,
         ItemType.RedCube,
         ItemType.PinkCube,
-        ItemType.PurpleCube
+        ItemType.PurpleCube,
     };
-
+    
     protected ItemType GetRandomItemType()
     {
-         return GetRandomItemTypeFromArray(DefaultItemTypes);
-    } 
+        return GetRandomItemTypeFromArray(DefaultItemTypes);
+    }
+
     protected ItemType GetRandomItemTypeFromArray(ItemType[] itemTypes)
     {
         return itemTypes[UnityEngine.Random.Range(0, itemTypes.Length)];
     }
-
-    protected ItemType GetRandomTypeFromWeight(Dictionary<ItemType , int > map)
+    
+    protected ItemType GetRandomTypeFromWeight(Dictionary<ItemType, int> map)
     {
-        var count = DefaultItemTypes.Length;
+        var count = map.Count;
         var values = new List<int>(count);
         var weight = new List<float>(count);
+
         foreach (var element in map)
         {
             values.Add((int)element.Key);
             weight.Add(element.Value);
         }
-
+        
         var item = values.GetRandomWithLuck(weight);
 
         return (ItemType)item;

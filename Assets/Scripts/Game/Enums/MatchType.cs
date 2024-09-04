@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public enum MatchType 
+public enum MatchType
 {
-    None=0,
+    None = 0,
     Green,
     Yellow,
     Blue,
@@ -12,5 +8,4 @@ public enum MatchType
     Pink,
     Purple,
     SpecialType
-    
 }

@@ -5,7 +5,14 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "9057452c86079e4265228480b1439442894d5078"
+      "hash": "c61a7d9961114ac2c4c28c81e4a66ae7387280e3"
+    },
+    "com.neuecc.unirx": {
+      "version": "https://github.com/neuecc/UniRx.git?path=Assets/Plugins/UniRx/Scripts",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "6baeccf6c544c155497164327cca72f28163a578"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -33,7 +40,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
-      "version": "2.4.4",
+      "version": "2.3.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {},

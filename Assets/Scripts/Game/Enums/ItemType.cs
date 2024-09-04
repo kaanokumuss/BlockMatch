@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemType  
+public enum ItemType
 {
-    //0 1 2 3 4 5 diye devam ediyor. 
-    
     None = 0,
     GreenCube,
     YellowCube,

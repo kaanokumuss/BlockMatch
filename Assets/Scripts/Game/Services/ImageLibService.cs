@@ -1,4 +1,4 @@
-﻿using Game.Services;
+using Game.Services;
 using UnityEngine;
 
 public class ImageLibService : MonoBehaviour

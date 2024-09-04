@@ -9,7 +9,7 @@ public class Cell : MonoBehaviour, ITouchable
     [SerializeField] private TextMeshPro labelText;
     public List<Cell> Neighbors { get; private set; } = new();
     public bool IsFillingCell { get; private set; }
-
+    
     public Item Item
     {
         get => _item;
@@ -47,6 +47,7 @@ public class Cell : MonoBehaviour, ITouchable
         IsFillingCell = Y == _board.Columns-1;
         transform.localPosition = new Vector3(x, y); // burada cellerimizin pozisyonlarini matrixle eşitliyoruz.  
         SetLabel();
+        UpdateNeighbors();
     }
 
     public bool IsFalling()
@@ -55,11 +56,24 @@ public class Cell : MonoBehaviour, ITouchable
 
         return false;
     }
-
     public bool HasItem()
     {
         return Item != null;
     }
+
+    private void UpdateNeighbors()
+    {
+        var up = _board.GetNeighbourWithDirection(this, Direction.Up);
+        var down = _board.GetNeighbourWithDirection(this, Direction.Down);
+        var left = _board.GetNeighbourWithDirection(this, Direction.Left);
+        var right = _board.GetNeighbourWithDirection(this, Direction.Right);
+        
+        if( up != null ) Neighbors.Add(up);
+        if( down != null ) Neighbors.Add(down);
+        if( left != null ) Neighbors.Add(left);
+        if( right != null ) Neighbors.Add(right);
+    }
+    
     private void SetLabel()
     {
         var cellName = $"{X}:{Y}";

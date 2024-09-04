@@ -14,7 +14,7 @@ public class GameplayInstaller : ScriptableObjectInstaller<GameplayInstaller>
         Container.BindFactory<Cell, Cell.CellFactory>().FromComponentInNewPrefab(cellPrefab).AsSingle();
         Container.BindFactory<ItemBase, ItemBase.ItemBaseFactory>().FromComponentInNewPrefab(itemBasePrefab).AsSingle();
         Container.BindFactory<Item, Item.Factory>().FromComponentInNewPrefab(itemPrefab).AsSingle();
-
+        Container.Bind<ImageLibService>().FromComponentInHierarchy().AsSingle();
         Container.DeclareSignal<OnElementTappedSignal>();
         Container.DeclareSignal<OnEmptyTappedSignal>();
     }

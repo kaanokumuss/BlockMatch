@@ -29,4 +29,9 @@ public class Item : MonoBehaviour
         }
     }
     private Cell _cell;
+
+    public class Factory : PlaceholderFactory<Item>
+    {
+        
+    }
 }
